@@ -1,0 +1,50 @@
+
+
+<style>
+  .products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .product {
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  .product img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+<% if user_signed_in?%>
+<h1>Product of e-markets</h1>
+<br>
+<%= link_to "Create product", new_e_market_path, method: :post , class: "btn btn-primary" %>
+<br><br>
+<div class="products">
+  <% @e_markets.each do |e_market| %>
+    <div class="product">
+      <%= link_to(image_tag(e_market.image), e_market) %>
+      <br><br>
+      <ul style="display:flex;">
+        <ol style="margin-left:0%;" >
+          <h5><%= link_to 'Edit', edit_e_market_path(e_market), class: "btn btn-primary" %></h5>
+        </ol>
+        <ol>
+          <h5><%= link_to 'show', e_market, data: { confirm: 'Are you sure?' }, class: 'btn btn-success' %>
+        </ol>
+        <ol>
+          <h5><%= link_to "Delete", deleteproduct_path(action: "addcart",id: e_market.id), method: :get, class: "btn btn-danger" %></h5>
+        </ol>
+      </ul>
+      
+    </div>
+  <% end %>
+</div>
+<br>
+<%else%>
+  <%= link_to "Sign_up", new_user_registration_path %><br>
+  <%= link_to "Log_in", new_user_session_path %><br>
+<%end%>
+

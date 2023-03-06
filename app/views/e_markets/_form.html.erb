@@ -1,0 +1,43 @@
+<%= form_for(@e_market) do |f| %>
+  <% if @e_market.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@e_market.errors.count, "error") %> prohibited this e_market from being saved:</h2>
+
+      <ul>
+      <% @e_market.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field",class="form-group">
+    <%= f.label :protect_name %><br>
+    <%= f.text_field :protect_name, class:"form-control", style:"width: 40%;"%>
+  </div>
+  <div class="field">
+    <%= f.label :protect_id %><br>
+    <%= f.text_field :protect_id , class:"form-control", style:"width: 40%;"%>
+  </div>
+  <div class="field">
+    <%= f.label :specification %><br>
+    <%= f.text_field :specification , class:"form-control", style:"width: 40%;"%>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.select :category, options_for_select(["mobiles", "glossary", "dress","shoe"]), {}, class: "form-control", style: "width: 40%;" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price ,class:"form-control", style:"width: 20%;" %>
+  </div>
+  <div class="field" >
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit class: "my-submit-button"  %>
+  </div>
+<% end %>

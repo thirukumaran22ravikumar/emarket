@@ -1,0 +1,40 @@
+<style>
+  .products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .product {
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  .product img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
+<h1>Product of e-markets</h1>
+<h5><%= link_to 'My Cart', cartshow_path(action: "mycart"), method: :post, class: "btn btn-primary" %></h5>
+
+<br>
+<br>
+<div class="products">
+  <% @e_markets.each do |e_market| %>
+    <div class="product">
+      <%= link_to(image_tag(e_market.image), e_market) %>
+      <br>
+      <br>
+      <h5><%= link_to 'Show detail', e_market, class: "btn btn-success" %></h5>
+      <% if current_user.role != "admin"%>
+        <h5><%= link_to 'Add Cart', CART_path(action: "addcart", id: e_market.id, Protect_name: e_market.protect_name, Protect: e_market.protect_id, Specification: e_market.specification, Price: e_market.price, image: e_market.image), method: :post, class: "btn btn-primary" %></h5>
+      <%end%>
+    </div>
+  <% end %>
+</div>
+<br>
+<%= image_tag("adds.png", width: 1100, height: 200) %>
+
+

@@ -1,0 +1,47 @@
+<h1>Cart</h1>
+<% if @e_mars != ''%>
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th>Product name:</th>
+        <th>Product_details:</th>
+        <th>Specification:</th>
+        <th>quantity:</th> 
+        <th>total cost:</th> 
+        
+        <th>edit</th>
+        <th>Delete</th>
+        <th>Product</th>
+      </tr>
+
+    </thead>
+
+    <tbody>
+      <% @e_mars.each do |e_mars| %>
+        <tr>
+  	      <td><%= e_mars.product_names %></td>
+  	      <td> <%= e_mars.product %></td>
+  	      <td><%= e_mars.specification %></td>
+          <td><%= e_mars.quentity %></td>   
+  	      <td>$<%= e_mars.total_cost %></td> 
+
+          <td style="padding-left: 10px;"><%= link_to "edit", editcartpage_path(action: "edit_cart", id: current_user.id,product_id: e_mars.product_id,product_names:e_mars.product_names,quantity:e_mars.quentity,image:e_mars.image), method: :get, class: "btn btn-info" %></td>
+
+
+          <td style="padding-left: 10px;"><%= link_to "delete", delete_path(action: "delete", id: current_user.id,product_id: e_mars.product_id), method: :get, class: "btn btn-danger" %></td>
+
+
+  	      <td><%= image_tag e_mars.image,width:"40px" %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%else%>
+  <div class="border" style="text-align: center;margin-top: 3%;">
+    <h5 style="color: red; margin-top: auto;">nothing to add to cart</h5>
+  </div>
+  
+<%end%>
+
+<br>

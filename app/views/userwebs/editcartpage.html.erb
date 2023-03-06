@@ -1,0 +1,29 @@
+<div style="display: flex;">
+  <div style="width: 60%;">
+    <%= form_for :edit_cart_path, url: edit_cart_path do |f| %>
+      <h3 >Edit Quantity E-market</h3>
+      <br>
+      <div class="field">
+        <h4>Name</h4>
+        <%= f.text_field :name, value: @name ,class:"form-control", style:"width: 70%;"%>
+      </div>
+        <div class="field">
+        <h4>quantity</h4>
+        <%= f.text_field :quantity, value: @quantity,class:"form-control", style:"width: 70%;" %>
+      </div>
+
+      <div class="field">
+        <h4>product_id</h4>
+        <%= f.text_field :product_id, value: @product_id ,class:"form-control", style:"width: 70%;"%>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit class: "my-submit-button" %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <div style="margin-left: 0%;width: 40%;">
+    <%= image_tag(@image, style: "width:200px;margin-top:0px;") %>
+  </div>
+</div>

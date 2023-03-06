@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th>Protect name:</th>
+      <th>Protect:</th>
+      <th>Specification:</th>
+      <th>Price:</th>      
+    </tr>
+  </thead>  
+  <tbody>
+    <tr>
+      <td><%= @e_market.protect_name %></td>
+      <td> <%= @e_market.protect_id %></td>
+      <td><%= @e_market.specification %></td>  
+      <td><%= @e_market.price %></td> 
+    <tr>
+  </tbody>
+</table>
+<h2>IMAGE:</h2>
+<%= image_tag @e_market.image,width:"250px" %>
+<div>
+  <%= link_to 'Edit', edit_e_market_path(@e_market) , class: "btn btn-success"%> |
+  <%= link_to 'Back', e_markets_path , class: "btn btn-primary"%>
+</div>
